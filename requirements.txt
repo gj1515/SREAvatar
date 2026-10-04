@@ -1,0 +1,19 @@
+# main/viewer.py (Windows, Python 3.10, CUDA 12.8)
+#   conda create -n sreavatar python=3.10 -y
+#   conda activate sreavatar
+#   pip install -r requirements.txt   (run from SREAvatar/)
+# wheels_win/*.whl are GPU-arch specific (built on PERSONA_RELEASE's GPU). On another GPU arch they import fine but fail
+# at the first CUDA call ("no kernel image is available"); rebuild them with PERSONA_RELEASE/build_cuda_ext_win.py.
+
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.8.0+cu128
+torchvision==0.23.0+cu128
+torchaudio==2.8.0+cu128
+
+./wheels_win/pytorch3d-0.7.8-cp310-cp310-win_amd64.whl
+./wheels_win/diff_gaussian_rasterization-0.0.0-cp310-cp310-win_amd64.whl
+
+numpy<2
+opencv-python==4.10.0.84
+tqdm
+dearpygui
